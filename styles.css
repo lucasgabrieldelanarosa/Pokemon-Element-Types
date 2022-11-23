@@ -1,0 +1,78 @@
+body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    color: var(--color-2);
+}
+:root{
+    --color-1: rgb(17, 16, 16);
+    --color-2: rgb(158, 143, 143);
+    --color-3: rgba(107, 94, 94, 0.658);
+}
+
+#left{
+    overflow-y: scroll;
+    min-height: 100vh;
+    width: 40%;
+    background-color: var(--color-1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    direction: rtl;
+}
+#left p{
+    direction: ltr;
+    font-size: 2.8rem;
+}
+#left .elements-container{
+    direction: ltr;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+#left .elements-container img{
+    justify-self: center;
+    height: 15vh;
+    padding: 10%;
+}
+#left .elements-container img:hover{
+    scale: 1.1;
+    cursor: pointer;
+}
+
+#right{
+    background-image: url('imgs/pokeball.webp');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    width: 60%;
+    font-size: 3vw;
+}
+#right p{
+    text-decoration: underline wavy;
+}
+#right .choices-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    padding: 5%;
+}
+#right .circle-container{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    width: 100%;
+    display: flex;
+}
+#right .circle{
+    background-color: var(--color-3);
+    border-radius: 50%;
+    height: 15vh;
+    width: 15vh;
+}
