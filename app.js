@@ -28,6 +28,7 @@ const possibleChoices = document.querySelectorAll('.element');
 const resultSpan1 = document.getElementById('result-span-1');
 const resultSpan2 = document.getElementById('result-span-2');
 const resultSpan3 = document.getElementById('result-span-3');
+const finalResultSpan = document.getElementById('final-result')
 
 let round = 1
 let userChoice
@@ -40,6 +41,9 @@ let result1
 let result2
 let result3
 let userWins = 0
+let computerWins = 0
+let draws = 0
+let finalResultValue
 
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
@@ -52,11 +56,9 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
     }else if(round === 3){
         userChoice3 = e.target.id
         round3()
+        finalResult()
     }
-    getComputerChoice()
 }))
-function getComputerChoice(){
-}
 
 function round1(){
     if(userChoice === 'bug'){
@@ -407,8 +409,17 @@ function round1(){
     }
     console.log(result1)
     if(result1 === 'Win'){
-        resultSpan1.style.backgroundImage = "url(imgs/favicon-16x16.png)";
+        resultSpan1.style.backgroundImage = "url(imgs/masterball-win.jpg)";
         resultSpan1.style.backgroundSize = 'cover'
+        userWins++
+    }else if(result1 === 'Loss'){
+        resultSpan1.style.backgroundImage = "url(imgs/pokeball-loss.webp)";
+        resultSpan1.style.backgroundSize = 'cover'
+        computerWins++
+    }else{
+        resultSpan1.style.backgroundImage = "url(imgs/ultraball-draw.webp)";
+        resultSpan1.style.backgroundSize = 'cover'
+        draws++
     }
     round++
 }
@@ -760,8 +771,17 @@ function round2(){
             }
         }
         if(result2 === 'Win'){
-            resultSpan2.style.backgroundImage = "url(imgs/favicon-16x16.png)";
+            resultSpan2.style.backgroundImage = "url(imgs/masterball-win.jpg)";
             resultSpan2.style.backgroundSize = 'cover'
+            userWins++
+        }else if(result2 === 'Loss'){
+            resultSpan2.style.backgroundImage = "url(imgs/pokeball-loss.webp)";
+            resultSpan2.style.backgroundSize = 'cover'
+            computerWins++
+        }else{
+            resultSpan2.style.backgroundImage = "url(imgs/ultraball-draw.webp)";
+            resultSpan2.style.backgroundSize = 'cover'
+            draws++
         }
         console.log(result2)
     round++
@@ -1114,10 +1134,29 @@ function round3(){
             }
         }    
         if(result3 === 'Win'){
-            resultSpan3.style.backgroundImage = "url(imgs/favicon-16x16.png)";
+            resultSpan3.style.backgroundImage = "url(imgs/masterball-win.jpg)";
             resultSpan3.style.backgroundSize = 'cover'
+            userWins++
+        }else if(result3 === 'Loss'){
+            resultSpan3.style.backgroundImage = "url(imgs/pokeball-loss.webp)";
+            resultSpan3.style.backgroundSize = 'cover'
+            computerWins++
+        }else{
+            resultSpan3.style.backgroundImage = "url(imgs/ultraball-draw.webp)";
+            resultSpan3.style.backgroundSize = 'cover'
+            draws++
         }
         console.log(result3)
     round++
 }
 
+function finalResult(){
+    if(userWins > computerWins){
+        finalResultValue = 'You won'
+    }else if(userWins < computerWins){
+        finalResultValue = 'You lost'
+    }else{
+        finalResultValue = "It's a draw"
+    }
+    finalResultSpan.innerHTML = finalResultValue 
+}
